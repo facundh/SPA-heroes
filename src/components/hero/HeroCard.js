@@ -15,7 +15,7 @@ export const HeroCard = ({
   return (
       <div className='col'>
 
-        <div className='card'>
+        <div className='card animate__animated animate__fadeInRight'>
             <div className='row no-gutters'>
                     <div className='col-4'>
 
@@ -37,7 +37,7 @@ export const HeroCard = ({
                             </p>
 
                             <Link to={`/hero/${id}`}>
-                                    Mas...
+                                    More...
                             </Link>
                         </div>
                     </div>

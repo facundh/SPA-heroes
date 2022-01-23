@@ -1,13 +1,18 @@
+import { useMemo } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { getHeroById } from "../../selectors/getHeroesById";
+
+import 'animate.css'
 
 
 export const HeroScreen = () => {
 
   // Asi es como lo pasamos a la ruta, el id es como esta detallado el params en la ruta y esta desestrcutrado de params
   const {heroeId} = useParams();
-  const hero = getHeroById(heroeId);
   const navigate = useNavigate();
+  
+  const hero = useMemo( () => getHeroById(heroeId), [heroeId] ) ;
+
 
   // Su el usuario pone un url que no existe lo devuelo a la pagina que yo le indico
   if(!hero) return <Navigate to='/'/>
@@ -31,7 +36,7 @@ export const HeroScreen = () => {
   return (
   <div className="row mt-5">
 
-    <div className="col-4">
+    <div className="col-4 animate__animated animate__fadeInLeft ">
       <img  
       src={imagePath}
       alt={hero.superhero}
@@ -39,7 +44,7 @@ export const HeroScreen = () => {
       />
     </div>
 
-    <div className="col-8">
+    <div className="col-8 animate__animated animate__fadeInRight ">
 
         <h3>
             {superhero}
@@ -62,7 +67,7 @@ export const HeroScreen = () => {
 
         <button className="btn btn-outline-primary w-100"
         onClick={handleReturn}>
-            Regresar
+            Go Back...
         </button>
     </div>
         
